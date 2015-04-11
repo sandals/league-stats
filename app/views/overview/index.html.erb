@@ -1,0 +1,35 @@
+<h1>Log Your Latest Game</h1>
+
+<%= form_for(Game.new) do |f| %>
+  <%= f.label :outcome %>
+  <%= f.text_field :outcome %>
+
+  <%= f.label :time_played %>
+  <%= f.text_field :time_played %>
+  
+  <%= f.label :champ %>
+  <%= f.text_field :champ %>
+
+  <%= f.label :cs %>
+  <%= f.number_field :cs %>
+
+  <%= f.label :kda %>
+  <%= f.text_field :kda %>
+
+  <%= f.label :lpdelta %>
+  <%= f.number_field :lpdelta %>
+
+  <%= f.label :role %>
+  <%= f.text_field :role %>
+
+  <%= f.label :mood, "Mood (0-5)" %>
+  <%= f.number_field :mood, :in => 0..5 %>
+
+  <%= f.submit "Log Game" %>
+<% end %>
+
+<h2>Recently Logged Games</h2>
+<% @recent_games.each do |game| %>
+  <%= game.outcome %> - 
+  <%= link_to "#{game.champ} #{game.role}", analysis_path(game) %>
+<% end %>
