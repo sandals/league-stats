@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def create
-    recorded_game = Game.new(game_params)
+    recorded_game = current_user.games.new(game_params)
 
     if recorded_game.save
       redirect_to analysis_path(recorded_game)
