@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root :to => 'overview#index', :via => :get
+
+  resources :games, :only => [:create]
+
+  get 'analysis/:id', :to => 'analysis#show', :as => 'analysis'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
